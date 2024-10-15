@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import useSearch from "../hooks/useSearch";
+import Card from "../components/Card";
 
 const Search = () => {
   const [searchParams] = useSearchParams();
@@ -9,11 +10,11 @@ const Search = () => {
 
   useEffect(() => {
     document.title = `${queryTerm} / MovieBite`;
-  }, queryTerm);
+  }, [queryTerm]);
   return (
-    <main>
+    <main className="min-h-screen">
       <section className="max-w-7xl py-7 m-auto">
-        <p className="text-4xl text-gray-500 mt-6 text-center">
+        <p className="text-4xl text-gray-500 m-6 text-center">
           {movies.length === 0
             ? `No results found for ${queryTerm}`
             : `Results for ${queryTerm}`}

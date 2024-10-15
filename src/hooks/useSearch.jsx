@@ -10,7 +10,7 @@ const useSearch = (queryTerm) => {
         `https://api.themoviedb.org/3/search/movie?query=${queryTerm}`,
         options
       );
-      const jsonData = response.json();
+      const jsonData = await response.json();
       setData(jsonData.results);
     }
     fetchMovies();

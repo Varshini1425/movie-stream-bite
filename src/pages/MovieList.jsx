@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useFetch from "../hooks/useFetch";
 import Card from "../components/Card";
 
-const MovieList = ({ apiPath }) => {
+const MovieList = ({ apiPath, title }) => {
   const { data: movies } = useFetch(apiPath);
+
+  useEffect(() => {
+    document.title = `${title} / MovieBite`;
+  }, [title]);
   // console.log(movies);
   return (
     <>
