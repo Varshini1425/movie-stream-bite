@@ -5,7 +5,7 @@ import { options } from "../utils/Options";
 const MovieDetails = () => {
   const params = useParams();
 
-  console.log(params);
+  // console.log(params);
 
   const [data, setData] = useState({});
 

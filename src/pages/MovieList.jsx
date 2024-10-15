@@ -4,7 +4,7 @@ import Card from "../components/Card";
 
 const MovieList = ({ apiPath }) => {
   const { data: movies } = useFetch(apiPath);
-  console.log(movies);
+  // console.log(movies);
   return (
     <>
       <main className="min-h-screen">

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { options } from "../utils/Options";
 
-const useFetch = (apiPath) => {
+const useFetch = (apiPath, queryTerm) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
