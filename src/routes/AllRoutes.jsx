@@ -23,7 +23,6 @@ export const AllRoutes = () => {
         path="movies/upcoming"
         element={<MovieList apiPath="movie/upcoming" title="Upcoming" />}
       />
-      <Route path="search" element={<Search apiPath="search/movie" />} />
       <Route path="search" element={<Search />} />
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />
