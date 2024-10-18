@@ -1,7 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import backgroundImage from "../assets/backgroundImage.jpg";
+import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = ({ isSignedIn, onSubmit }) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await onSubmit({ name, password, email });
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <section class="bg-gray-50 dark:bg-gray-900">
       <div
@@ -12,29 +28,33 @@ const LoginPage = () => {
           <div>
             <div class="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800">
               <h2 class="text-2xl font-bold text-gray-900 dark:text-white">
-                Sign in to MovieBite
+                {isSignedIn ? "Sign in to the MovieBite" : " Create an account"}
               </h2>
-              <form class="mt-8 space-y-6" action="#">
+              <form class="mt-8 space-y-6" onSubmit={handleSubmit}>
+                {!isSignedIn && (
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    >
+                      Your Name
+                    </label>
+                    <input
+                      type="text"
+                      name="name"
+                      id="name"
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                      placeholder="John Doe"
+                      required={!isSignedIn}
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                    />
+                  </div>
+                )}
                 <div>
                   <label
-                    for="name"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                  >
-                    Your Name
-                  </label>
-                  <input
-                    type="name"
-                    name="name"
-                    id="name"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="name@company.com"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    for="email"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    htmlFor="email"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Your email
                   </label>
@@ -42,15 +62,17 @@ const LoginPage = () => {
                     type="email"
                     name="email"
                     id="email"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="name@company.com"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                 </div>
                 <div>
                   <label
-                    for="password"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                    htmlFor="password"
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
                     Your password
                   </label>
@@ -59,47 +81,53 @@ const LoginPage = () => {
                     name="password"
                     id="password"
                     placeholder="••••••••"
-                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
-                <div class="flex items-start">
-                  <div class="flex items-center h-5">
-                    <input
-                      id="remember"
-                      aria-describedby="remember"
-                      name="remember"
-                      type="checkbox"
-                      class="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
-                      required
-                    />
-                  </div>
-                  <div class="ms-3 text-sm">
-                    <label
-                      for="remember"
-                      class="font-medium text-gray-500 dark:text-gray-400"
+                {isSignedIn && (
+                  <div className="flex items-start">
+                    <div className="flex items-center h-5">
+                      <input
+                        id="remember"
+                        aria-describedby="remember"
+                        name="remember"
+                        type="checkbox"
+                        className="w-4 h-4 border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:bg-gray-700 dark:border-gray-600"
+                      />
+                    </div>
+                    <div className="ms-3 text-sm">
+                      <label
+                        htmlFor="remember"
+                        className="font-medium text-gray-500 dark:text-gray-400"
+                      >
+                        Remember this device
+                      </label>
+                    </div>
+                    <a
+                      href="#"
+                      className="ms-auto text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
                     >
-                      Remember this device
-                    </label>
+                      Forget Password?
+                    </a>
                   </div>
-                  <a
-                    href="#"
-                    class="ms-auto text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
-                  >
-                    Forget Password?
-                  </a>
-                </div>
+                )}
                 <button
                   type="submit"
                   class="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
-                  Login to your account
+                  {isSignedIn ? "Login to account" : "Register"}
                 </button>
-                <div class="text-sm font-medium text-gray-900 dark:text-white">
-                  Not registered yet?{" "}
-                  <a class="text-blue-600 hover:underline dark:text-blue-500">
-                    Create account
-                  </a>
+                <div className="text-sm font-medium text-gray-900 dark:text-white">
+                  {isSignedIn ? "Not registered yet?" : "Already registered?"}{" "}
+                  <Link
+                    to={isSignedIn ? "/signup" : "/signin"}
+                    className="text-blue-600 hover:underline dark:text-blue-500"
+                  >
+                    {isSignedIn ? "Create account" : "Sign in"}
+                  </Link>
                 </div>
               </form>
             </div>
