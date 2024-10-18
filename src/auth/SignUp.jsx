@@ -15,6 +15,7 @@ const SignUp = () => {
       await updateProfile(userCredential.user, { displayName: name });
       navigate("/");
     } catch (error) {
+      alert("This account is already exist");
       console.error("Error signing up: ", error);
       // Handle error (e.g., show error message to user)
     }

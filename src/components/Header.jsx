@@ -1,7 +1,38 @@
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
 
 const Header = () => {
+  const LogoutButton = () => {
+    const [user, loading] = useAuthState(auth);
+
+    const handleLogout = async () => {
+      try {
+        await signOut(auth);
+        alert("User logged out successfully");
+      } catch (error) {
+        alert("Something went wrong");
+      }
+    };
+    if (loading) {
+      return <p>Loading....</p>;
+    }
+
+    return (
+      user && (
+        <button
+          type="button"
+          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 items-center"
+          onClick={handleLogout}
+        >
+          Logout
+        </button>
+      )
+    );
+  };
+
   const activeClass =
     "block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 md:dark:text-blue-500 active";
   const inActiveClass =
@@ -109,12 +140,7 @@ const Header = () => {
                     placeholder="Search..."
                   />
                 </form>
-                <button
-                  type="button"
-                  className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800 items-center"
-                >
-                  Logout
-                </button>
+                <LogoutButton />
               </div>
             </div>
             <button

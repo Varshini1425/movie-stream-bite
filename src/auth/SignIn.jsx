@@ -10,6 +10,7 @@ const SignIn = () => {
       await signInWithEmailAndPassword(auth, email, password);
       navigate("/");
     } catch (error) {
+      alert("Email or password is incorrect");
       console.error("Error signing in: ", error);
       // Handle error (e.g., show error message to user)
     }
