@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { toast } from "react-toastify";
 
 const Header = () => {
   const LogoutButton = () => {
@@ -11,9 +12,9 @@ const Header = () => {
     const handleLogout = async () => {
       try {
         await signOut(auth);
-        alert("User logged out successfully");
+        toast.success("User logged out successfully");
       } catch (error) {
-        alert("Something went wrong");
+        toast.error("Something went wrong");
       }
     };
     if (loading) {
