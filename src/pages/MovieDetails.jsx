@@ -37,9 +37,9 @@ const MovieDetails = () => {
   }, []);
 
   return (
-    <main className="min-h-screen pt-24">
+    <main className="min-h-screen pt-24 ">
       <section className="flex justify-around flex-wrap py-5 items-center">
-        <div className="max-w-sm pr-5">
+        <div className="max-w-sm lg:pr-5 px-4">
           <img src={image} alt="" />
         </div>
         <div className="max-w-2xl">
