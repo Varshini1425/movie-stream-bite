@@ -19,12 +19,12 @@ const LoginPage = ({ isSignedIn, onSubmit }) => {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900">
+    <section className="bg-gray-50 dark:bg-gray-900 ">
       <div
         className="min-h-screen flex items-center justify-center bg-cover bg-center"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
-        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-2 gap-8 lg:gap-16">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 grid lg:grid-cols-1 gap-8 lg:gap-16 ">
           <div>
             <div className="w-full lg:max-w-xl p-6 space-y-8 sm:p-8 bg-white rounded-lg shadow-xl dark:bg-gray-800">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
@@ -116,7 +116,7 @@ const LoginPage = ({ isSignedIn, onSubmit }) => {
                 )}
                 <button
                   type="submit"
-                  className="w-full px-5 py-3 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 sm:w-auto dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                  className="w-full px-5 py-3  text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:ring-blue-300  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                 >
                   {isSignedIn ? "Login to account" : "Register"}
                 </button>
