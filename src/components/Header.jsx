@@ -16,9 +16,30 @@ const Header = () => {
     const handleLogout = async () => {
       try {
         await signOut(auth);
-        toast.success("User logged out successfully");
+        closeMobileMenu();
+        toast.success("User logged out successfully", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          className: "bg-gradient-to-r from-purple-500 to-blue-500",
+        });
       } catch (error) {
-        toast.error("Something went wrong");
+        toast.error("Something went wrong", {
+          position: "topt-left",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+          className: "bg-gradient-to-r from-red-500 to-orange-500",
+        });
       }
     };
     if (loading) {
@@ -65,6 +86,9 @@ const Header = () => {
 
   const toggleMobileSearch = () => {
     setIsMobileSearchOpen(!isMobileSearchOpen);
+    setIsMobileMenuOpen(false);
+  };
+  const closeMobileMenu = () => {
     setIsMobileMenuOpen(false);
   };
 
@@ -185,7 +209,9 @@ const Header = () => {
                       className={({ isActive }) =>
                         isActive ? activeClass : inActiveClass
                       }
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={() => {
+                        closeMobileMenu;
+                      }}
                     >
                       {item.name}
                     </NavLink>

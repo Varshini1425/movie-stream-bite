@@ -12,14 +12,14 @@ const Search = () => {
     document.title = `${queryTerm} / MovieBite`;
   }, [queryTerm]);
   return (
-    <main className="min-h-screen">
-      <section className="max-w-7xl py-7 m-auto">
+    <main className="min-h-screen px-4 sm:px-6 lg:px-8">
+      <section className="max-w-7xl mx-auto py-7">
         <p className="text-4xl text-gray-500 m-6 text-center">
           {movies.length === 0
             ? `No results found for ${queryTerm}`
             : `Results for ${queryTerm}`}
         </p>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5">
           {movies.map((movie) => (
             <Card key={movie.id} movie={movie}></Card>
           ))}
