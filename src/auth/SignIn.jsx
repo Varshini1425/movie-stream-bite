@@ -23,7 +23,7 @@ const SignIn = () => {
       });
     } catch (error) {
       toast.error("Email or password is incorrect", {
-        position: "topt-left",
+        position: "top-left",
         autoClose: 1000,
         hideProgressBar: false,
         closeOnClick: true,
