@@ -32,7 +32,7 @@ const Header = () => {
         });
       } catch (error) {
         toast.error("Something went wrong", {
-          position: "topt-left",
+          position: "top-left",
           autoClose: 1000,
           hideProgressBar: false,
           closeOnClick: true,

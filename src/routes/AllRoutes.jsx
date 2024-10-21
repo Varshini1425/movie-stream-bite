@@ -3,12 +3,16 @@ import { MovieList, MovieDetails, PageNotFound, Search } from "../pages";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import PrivateRoute from "../auth/PrivateRoute";
+import ResetPassword from "../auth/ResetPassword";
+import HandlePasswordReset from "../auth/HandlePasswordReset";
 
 export const AllRoutes = () => {
   return (
     <Routes>
       <Route path="signin" element={<SignIn />} />
       <Route path="signup" element={<SignUp />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/handle-reset-password" element={<HandlePasswordReset />} />
       <Route
         path="/"
         element={

@@ -106,12 +106,12 @@ const LoginPage = ({ isSignedIn, onSubmit }) => {
                         Remember this device
                       </label>
                     </div>
-                    <a
-                      href="#"
+                    <Link
+                      to="/reset-password"
                       className="ms-auto text-sm font-medium text-blue-600 hover:underline dark:text-blue-500"
                     >
                       Forget Password?
-                    </a>
+                    </Link>
                   </div>
                 )}
                 <button
