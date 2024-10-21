@@ -3,7 +3,10 @@ import useFetch from "../hooks/useFetch";
 import Card from "../components/Card";
 
 const MovieList = ({ apiPath, title }) => {
-  const { data: movies } = useFetch(apiPath);
+  const { data: movies, error, loading } = useFetch(apiPath);
+
+  if (loading) return <div className="min-h-screen">Loading...</div>;
+  if (error) return <div className="min-h-screen">Error:{error.message}</div>;
 
   useEffect(() => {
     document.title = `${title} / MovieBite`;

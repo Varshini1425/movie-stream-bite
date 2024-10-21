@@ -7,7 +7,7 @@ const useFetch = (apiPath) => {
   useEffect(() => {
     async function fetchMovies() {
       const response = await fetch(
-        `http://api.themoviedb.org/3/${apiPath}?language=en-US&page=1`,
+        `https://api.themoviedb.org/3/${apiPath}?language=en-US&page=1`,
         options
       );
       const data = await response.json();
