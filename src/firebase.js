@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCtqtxRjRJ14ZTDTZZmx-2uLIJfzXNjVAs",
-  authDomain: "moviebite-8ab46.firebaseapp.com",
-  projectId: "moviebite-8ab46",
-  storageBucket: "moviebite-8ab46.appspot.com",
-  messagingSenderId: "222225614229",
-  appId: "1:222225614229:web:a7146c701823c0c6e7629c",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
