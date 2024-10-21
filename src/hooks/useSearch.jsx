@@ -7,7 +7,7 @@ const useSearch = (queryTerm) => {
   useEffect(() => {
     async function fetchMovies() {
       const response = await fetch(
-        `https://api.themoviedb.org/3/search/movie?query=${queryTerm}`,
+        `http://api.themoviedb.org/3/search/movie?query=${queryTerm}`,
         options
       );
       const jsonData = await response.json();
