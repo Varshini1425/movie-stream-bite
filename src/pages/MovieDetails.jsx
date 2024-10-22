@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { options } from "../utils/Options";
+import playButton from "../assets/play-button.svg";
 
 const MovieDetails = () => {
   const params = useParams();
@@ -39,8 +40,18 @@ const MovieDetails = () => {
   return (
     <main className="min-h-screen pt-24 ">
       <section className="flex justify-around flex-wrap py-5 items-center">
-        <div className="max-w-sm lg:pr-5 px-4">
+        <div className="max-w-sm lg:pr-5 px-4  relative group">
           <img src={image} alt="" />
+          <Link
+            to={`/movie/${params.id}/videos`}
+            className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 rounded-lg"
+          >
+            <img
+              src={playButton}
+              alt="play-button"
+              className="w-16 h-16 transform hover:scale-110 transition-transform"
+            />
+          </Link>
         </div>
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold my-3 text-center lg:text-left">
@@ -72,6 +83,15 @@ const MovieDetails = () => {
             </svg>
             <p>{vote_average}</p>
             <p>({vote_count}) reviews</p>
+          </div>
+          <div className="flex items-center justify-center lg:justify-start">
+            <Link to={`/movie/${params.id}/videos`}>
+              <img
+                src={playButton}
+                alt="play-button"
+                className="w-12 h-12 mt-5"
+              />
+            </Link>
           </div>
         </div>
       </section>

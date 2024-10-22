@@ -15,3 +15,6 @@ https://api.themoviedb.org/3/movie/movie_id?language=en-US
 
 Search:
 https://api.themoviedb.org/3/search/movie?query=vaazhai&include_adult=false&language=en-US&page=1
+
+VideoPlayer:
+https://api.themoviedb.org/3/movie/movie_id/videos?language=en-US

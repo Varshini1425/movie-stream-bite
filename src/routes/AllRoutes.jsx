@@ -1,5 +1,11 @@
 import { Routes, Route } from "react-router-dom";
-import { MovieList, MovieDetails, PageNotFound, Search } from "../pages";
+import {
+  MovieList,
+  MovieDetails,
+  PageNotFound,
+  Search,
+  Player,
+} from "../pages";
 import SignIn from "../auth/SignIn";
 import SignUp from "../auth/SignUp";
 import PrivateRoute from "../auth/PrivateRoute";
@@ -13,6 +19,8 @@ export const AllRoutes = () => {
       <Route path="signup" element={<SignUp />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/handle-reset-password" element={<HandlePasswordReset />} />
+
+      {/* now playing */}
       <Route
         path="/"
         element={
@@ -21,6 +29,8 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       />
+
+      {/* movie details */}
       <Route
         path="movie/:id"
         element={
@@ -29,6 +39,18 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       />
+
+      {/* videos */}
+      <Route
+        path="movie/:id/videos"
+        element={
+          <PrivateRoute>
+            <Player />
+          </PrivateRoute>
+        }
+      />
+
+      {/* popular */}
       <Route
         path="movies/popular"
         element={
@@ -37,6 +59,8 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       />
+
+      {/* top rated */}
       <Route
         path="movies/top"
         element={
@@ -45,6 +69,8 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       />
+
+      {/* upcoming */}
       <Route
         path="movies/upcoming"
         element={
@@ -53,6 +79,8 @@ export const AllRoutes = () => {
           </PrivateRoute>
         }
       />
+
+      {/* search */}
       <Route
         path="search"
         element={

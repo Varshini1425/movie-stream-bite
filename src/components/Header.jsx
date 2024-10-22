@@ -5,6 +5,7 @@ import { auth } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { toast } from "react-toastify";
 import { useTheme } from "../context/ThemeContext";
+import movieBiteLogo from "/movieBiteIcon.svg";
 
 const Header = () => {
   const navigate = useNavigate();
@@ -132,7 +133,7 @@ const Header = () => {
           to="/"
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
-          <img src="./movieBiteIcon.svg" className="h-8" alt="MovieBite Logo" />
+          <img src={movieBiteLogo} className="h-8" alt="MovieBite Logo" />
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             MovieBite
           </span>
