@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { options } from "../utils/Options";
-import { video } from "framer-motion/client";
 
 const Player = () => {
   const params = useParams();
