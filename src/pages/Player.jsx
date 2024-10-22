@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { options } from "../utils/Options";
+import { toast } from "react-toastify";
 
 const Player = () => {
   const params = useParams();
@@ -83,12 +84,13 @@ const Player = () => {
             {" "}
             {/* Added a wrapper div */}
             <iframe
-              className="w-full h-[calc(90vh-100px)] rounded-lg shadow-xl" // Adjusted height
-              src={`https://www.youtube.com/embed/${data.key}`}
-              title={name}
+              className="absolute top-0 left-0 w-full h-full"
+              src={`https://www.youtube.com/embed/${data.key}?playsinline=1`}
+              title={data.name}
               frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
               allowFullScreen
+              playsInline
             ></iframe>
             {data && (
               <div className="flex m-6 justify-between items-center ">
