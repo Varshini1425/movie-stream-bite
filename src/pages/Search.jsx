@@ -6,11 +6,18 @@ import Card from "../components/Card";
 const Search = () => {
   const [searchParams] = useSearchParams();
   const queryTerm = searchParams.get("q");
-  const { data: movies } = useSearch(queryTerm);
+  const { data: movies, loading, error } = useSearch(queryTerm);
 
   useEffect(() => {
     document.title = `${queryTerm} / MovieBite`;
   }, [queryTerm]);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  if (error) {
+    return <div>Error:{error}</div>;
+  }
   return (
     <main className="min-h-screen px-4 sm:px-6 lg:px-8">
       <section className="max-w-7xl mx-auto py-7">

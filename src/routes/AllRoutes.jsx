@@ -57,7 +57,7 @@ export const AllRoutes = () => {
         path="search"
         element={
           <PrivateRoute>
-            <Search />
+            <Search apiPath="search/movie" />
           </PrivateRoute>
         }
       />
